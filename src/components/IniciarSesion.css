@@ -1,0 +1,73 @@
+.iniciar-sesion-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .iniciar-sesion-titulo {
+    text-align: center;
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .iniciar-sesion-mensaje {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  .iniciar-sesion-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .iniciar-sesion-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .iniciar-sesion-etiqueta {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .iniciar-sesion-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .iniciar-sesion-boton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .iniciar-sesion-boton:hover {
+    background-color: #45a049;
+  }
+  
+  @media (max-width: 768px) {
+    .iniciar-sesion-container {
+      padding: 20px;
+    }
+  
+    .iniciar-sesion-titulo {
+      font-size: 1.5rem;
+    }
+  }
+  

@@ -1,0 +1,91 @@
+/* Contenedor principal */
+.registrar-cliente-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título */
+  .registrar-cliente-titulo {
+    text-align: center;
+    font-size: 2rem;
+    color: #4a90e2;
+    margin-bottom: 20px;
+  }
+  
+  /* Mensaje de feedback */
+  .registrar-cliente-mensaje {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .registrar-cliente-mensaje.exito {
+    background-color: #e6fff2;
+    color: #2e8b57;
+  }
+  
+  .registrar-cliente-mensaje.error {
+    background-color: #ffe6e6;
+    color: #dc3545;
+  }
+  
+  /* Formulario */
+  .registrar-cliente-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Campo del formulario */
+  .registrar-cliente-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .registrar-cliente-etiqueta {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .registrar-cliente-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Botón */
+  .registrar-cliente-boton {
+    padding: 12px 20px;
+    background-color: #4facfe;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .registrar-cliente-boton:hover {
+    background-color: #3f90f0;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 768px) {
+    .registrar-cliente-container {
+      padding: 20px;
+      margin: 20px;
+    }
+  
+    .registrar-cliente-titulo {
+      font-size: 1.8rem;
+    }
+  }
+  
