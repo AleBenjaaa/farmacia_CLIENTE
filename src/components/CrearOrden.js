@@ -11,10 +11,11 @@ const CrearOrden = () => {
   const [mensaje, setMensaje] = useState('');
   const [tipoMensaje, setTipoMensaje] = useState('');
 
+  // Obtener la lista de medicamentos al cargar el componente
   useEffect(() => {
     api.get('/medicamentos/')
       .then((response) => setMedicamentos(response.data))
-      .catch((error) => console.error(error));
+      .catch((error) => console.error('Error al cargar medicamentos:', error));
   }, []);
 
   const manejarOrden = (e) => {
@@ -26,23 +27,57 @@ const CrearOrden = () => {
       return;
     }
 
+    // Encontrar el medicamento seleccionado
+    const medicamentoSeleccionado = medicamentos.find(
+      (med) => med.id === parseInt(medicamentoId)
+    );
+
+    // Validar si la cantidad supera el stock disponible
+    if (!medicamentoSeleccionado || cantidad > medicamentoSeleccionado.stock) {
+      setMensaje(
+        `Error: La cantidad seleccionada (${cantidad}) supera el stock disponible (${medicamentoSeleccionado?.stock || 0}).`
+      );
+      setTipoMensaje('error');
+      return;
+    }
+
     const datosOrden = {
       cliente: cliente.id,
       medicamentos: [{ medicamento: medicamentoId, cantidad: parseInt(cantidad) }],
     };
 
+    // Crear la orden
     api.post('/ordenes/', datosOrden)
       .then(() => {
-        setMensaje('Orden creada con éxito.');
-        setTipoMensaje('exito');
-        setMedicamentoId('');
-        setCantidad(1);
+        const nuevoStock = medicamentoSeleccionado.stock - parseInt(cantidad);
+
+        // Actualizar el stock en el servidor
+        api.patch(`/medicamentos/${medicamentoId}/`, { stock: nuevoStock })
+          .then(() => {
+            // Actualizar el estado local de medicamentos
+            setMedicamentos((prevMedicamentos) =>
+              prevMedicamentos.map((med) =>
+                med.id === parseInt(medicamentoId)
+                  ? { ...med, stock: nuevoStock }
+                  : med
+              )
+            );
+
+            setMensaje('Orden creada con éxito.');
+            setTipoMensaje('exito');
+            setMedicamentoId('');
+            setCantidad(1);
+          })
+          .catch((error) => {
+            console.error('Error al actualizar el stock:', error);
+            setMensaje('La orden fue creada, pero no se pudo actualizar el stock.');
+            setTipoMensaje('error');
+          });
       })
       .catch((error) => {
-        if (error.response) {
-          setMensaje(`Error: ${error.response.data.non_field_errors || error.response.data}`);
-          setTipoMensaje('error');
-        }
+        console.error('Error al crear la orden:', error);
+        setMensaje('Error al crear la orden. Intente nuevamente.');
+        setTipoMensaje('error');
       });
   };
 
@@ -53,13 +88,19 @@ const CrearOrden = () => {
           <div className="crear-orden-container p-4">
             <h2 className="crear-orden-titulo text-center mb-4">Crear Orden</h2>
             {mensaje && (
-              <div className={`alert ${tipoMensaje === 'exito' ? 'alert-success' : 'alert-danger'} crear-orden-mensaje ${tipoMensaje}`}>
+              <div
+                className={`alert ${
+                  tipoMensaje === 'exito' ? 'alert-success' : 'alert-danger'
+                } crear-orden-mensaje ${tipoMensaje}`}
+              >
                 {mensaje}
               </div>
             )}
             <form onSubmit={manejarOrden}>
               <div className="mb-3">
-                <label htmlFor="medicamento" className="form-label crear-orden-etiqueta">Medicamento:</label>
+                <label htmlFor="medicamento" className="form-label crear-orden-etiqueta">
+                  Medicamento:
+                </label>
                 <select
                   id="medicamento"
                   className="form-select crear-orden-select"
@@ -78,7 +119,9 @@ const CrearOrden = () => {
                 </select>
               </div>
               <div className="mb-3">
-                <label htmlFor="cantidad" className="form-label crear-orden-etiqueta">Cantidad:</label>
+                <label htmlFor="cantidad" className="form-label crear-orden-etiqueta">
+                  Cantidad:
+                </label>
                 <input
                   id="cantidad"
                   className="form-control crear-orden-input"
@@ -90,7 +133,9 @@ const CrearOrden = () => {
                 />
               </div>
               <div className="d-grid">
-                <button className="btn crear-orden-boton" type="submit">Crear Orden</button>
+                <button className="btn crear-orden-boton" type="submit">
+                  Crear Orden
+                </button>
               </div>
             </form>
           </div>
@@ -101,4 +146,3 @@ const CrearOrden = () => {
 };
 
 export default CrearOrden;
-
