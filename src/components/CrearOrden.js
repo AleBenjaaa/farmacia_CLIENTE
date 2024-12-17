@@ -47,41 +47,55 @@ const CrearOrden = () => {
   };
 
   return (
-    <div className="crear-orden-container">
-      <h2 className="crear-orden-titulo">Crear Orden</h2>
-      {mensaje && <p className={`crear-orden-mensaje ${tipoMensaje}`}>{mensaje}</p>}
-      <form onSubmit={manejarOrden} className="crear-orden-formulario">
-        <div className="crear-orden-campo">
-          <label className="crear-orden-etiqueta">Medicamento:</label>
-          <select
-            className="crear-orden-select"
-            value={medicamentoId}
-            onChange={(e) => setMedicamentoId(e.target.value)}
-            required
-          >
-            <option value="">Seleccione un medicamento</option>
-            {medicamentos
-              .filter((medicamento) => medicamento.stock > 0)
-              .map((medicamento) => (
-                <option key={medicamento.id} value={medicamento.id}>
-                  {medicamento.nombre} (Stock: {medicamento.stock})
-                </option>
-              ))}
-          </select>
+    <div className="container py-5">
+      <div className="row justify-content-center">
+        <div className="col-md-8 col-lg-6">
+          <div className="crear-orden-container p-4">
+            <h2 className="crear-orden-titulo text-center mb-4">Crear Orden</h2>
+            {mensaje && (
+              <div className={`alert ${tipoMensaje === 'exito' ? 'alert-success' : 'alert-danger'} crear-orden-mensaje ${tipoMensaje}`}>
+                {mensaje}
+              </div>
+            )}
+            <form onSubmit={manejarOrden}>
+              <div className="mb-3">
+                <label htmlFor="medicamento" className="form-label crear-orden-etiqueta">Medicamento:</label>
+                <select
+                  id="medicamento"
+                  className="form-select crear-orden-select"
+                  value={medicamentoId}
+                  onChange={(e) => setMedicamentoId(e.target.value)}
+                  required
+                >
+                  <option value="">Seleccione un medicamento</option>
+                  {medicamentos
+                    .filter((medicamento) => medicamento.stock > 0)
+                    .map((medicamento) => (
+                      <option key={medicamento.id} value={medicamento.id}>
+                        {medicamento.nombre} (Stock: {medicamento.stock})
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="cantidad" className="form-label crear-orden-etiqueta">Cantidad:</label>
+                <input
+                  id="cantidad"
+                  className="form-control crear-orden-input"
+                  type="number"
+                  value={cantidad}
+                  min="1"
+                  onChange={(e) => setCantidad(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="d-grid">
+                <button className="btn crear-orden-boton" type="submit">Crear Orden</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="crear-orden-campo">
-          <label className="crear-orden-etiqueta">Cantidad:</label>
-          <input
-            className="crear-orden-input"
-            type="number"
-            value={cantidad}
-            min="1"
-            onChange={(e) => setCantidad(e.target.value)}
-            required
-          />
-        </div>
-        <button className="crear-orden-boton" type="submit">Crear Orden</button>
-      </form>
+      </div>
     </div>
   );
 };
