@@ -11,7 +11,6 @@ const CrearOrden = () => {
   const [mensaje, setMensaje] = useState('');
   const [tipoMensaje, setTipoMensaje] = useState('');
 
-  // Obtener la lista de medicamentos al cargar el componente
   useEffect(() => {
     api.get('/medicamentos/')
       .then((response) => setMedicamentos(response.data))
@@ -27,12 +26,10 @@ const CrearOrden = () => {
       return;
     }
 
-    // Encontrar el medicamento seleccionado
     const medicamentoSeleccionado = medicamentos.find(
       (med) => med.id === parseInt(medicamentoId)
     );
 
-    // Validar si la cantidad supera el stock disponible
     if (!medicamentoSeleccionado || cantidad > medicamentoSeleccionado.stock) {
       setMensaje(
         `Error: La cantidad seleccionada (${cantidad}) supera el stock disponible (${medicamentoSeleccionado?.stock || 0}).`
@@ -46,15 +43,12 @@ const CrearOrden = () => {
       medicamentos: [{ medicamento: medicamentoId, cantidad: parseInt(cantidad) }],
     };
 
-    // Crear la orden
     api.post('/ordenes/', datosOrden)
       .then(() => {
         const nuevoStock = medicamentoSeleccionado.stock - parseInt(cantidad);
 
-        // Actualizar el stock en el servidor
         api.patch(`/medicamentos/${medicamentoId}/`, { stock: nuevoStock })
           .then(() => {
-            // Actualizar el estado local de medicamentos
             setMedicamentos((prevMedicamentos) =>
               prevMedicamentos.map((med) =>
                 med.id === parseInt(medicamentoId)
@@ -85,21 +79,20 @@ const CrearOrden = () => {
     <div className="container py-5">
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6">
-          <div className="crear-orden-container p-4">
-            <h2 className="crear-orden-titulo text-center mb-4">Crear Orden</h2>
+          <div className="crear-orden-container p-4 p-md-5">
+            <h2 className="crear-orden-titulo text-center mb-4">Crear Nueva Orden</h2>
             {mensaje && (
               <div
-                className={`alert ${
-                  tipoMensaje === 'exito' ? 'alert-success' : 'alert-danger'
-                } crear-orden-mensaje ${tipoMensaje}`}
+                className={`alert crear-orden-mensaje ${tipoMensaje} mb-4`}
+                role="alert"
               >
                 {mensaje}
               </div>
             )}
             <form onSubmit={manejarOrden}>
-              <div className="mb-3">
+              <div className="mb-4">
                 <label htmlFor="medicamento" className="form-label crear-orden-etiqueta">
-                  Medicamento:
+                  Seleccionar Medicamento
                 </label>
                 <select
                   id="medicamento"
@@ -108,7 +101,7 @@ const CrearOrden = () => {
                   onChange={(e) => setMedicamentoId(e.target.value)}
                   required
                 >
-                  <option value="">Seleccione un medicamento</option>
+                  <option value="">Elige un medicamento</option>
                   {medicamentos
                     .filter((medicamento) => medicamento.stock > 0)
                     .map((medicamento) => (
@@ -118,9 +111,9 @@ const CrearOrden = () => {
                     ))}
                 </select>
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <label htmlFor="cantidad" className="form-label crear-orden-etiqueta">
-                  Cantidad:
+                  Cantidad
                 </label>
                 <input
                   id="cantidad"
@@ -146,3 +139,4 @@ const CrearOrden = () => {
 };
 
 export default CrearOrden;
+

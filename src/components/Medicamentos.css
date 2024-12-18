@@ -1,43 +1,32 @@
-/* Estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
 body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background-color: #f0f8ff; /* Azul muy claro */
-  margin: 0;
-  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f8ff;
   color: #333;
 }
 
-/* Contenedor principal */
 .medicamentos-container {
-  padding: 40px 20px;
   max-width: 1200px;
-  margin: auto;
 }
 
-/* Título */
 .medicamentos-title {
-  text-align: center;
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-  color: #1e90ff; /* Azul dodger */
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.75rem;
+  color: #1e90ff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 2rem;
 }
 
-/* Diseño de grid */
-.medicamentos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  gap: 30px;
-}
-
-/* Tarjeta de medicamento */
 .medicamento-card {
   background-color: #fff;
   border: none;
   border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.425);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .medicamento-card:hover {
@@ -45,73 +34,74 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Título del medicamento */
-.medicamento-card h2 {
-  font-size: 1.6rem;
-  color: #4169e1; 
-  margin: 0 0 15px;
+.medicamento-card .card-body {
+  padding: 1.5rem;
+}
+
+.medicamento-card .card-title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+  color: #4169e1;
+  margin-bottom: 1rem;
   border-bottom: 2px solid #e6f3ff;
-  padding-bottom: 10px;
+  padding-bottom: 0.5rem;
+  font-weight: 700;
 }
 
-/* Descripción */
-.descripcion {
-  font-size: 1rem;
+.medicamento-card .descripcion {
+  font-size: 0.95rem;
   color: #555;
-  margin: 15px 0;
   line-height: 1.6;
+  font-weight: 300;
 }
 
-/* Precio */
-.precio {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #20b2aa; 
-  margin: 20px 0 15px;
+.medicamento-card .precio {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #20b2aa;
+  margin-top: 1rem;
 }
 
-/* Estado del stock */
-.stock {
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 5px 10px;
+.medicamento-card .stock {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.3rem 0.8rem;
   border-radius: 20px;
   display: inline-block;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.stock.disponible {
-  background-color: #e6fff2; 
-  color: #2e8b57; 
+.medicamento-card .stock.disponible {
+  background-color: #e6fff2;
+  color: #2e8b57;
 }
 
-.stock.agotado {
-  background-color: #ffe6e6; 
-  color: #dc3545; /* Rojo */
+.medicamento-card .stock.agotado {
+  background-color: #ffe6e6;
+  color: #dc3545;
 }
 
-/* Responsive design */
 @media (max-width: 1200px) {
-  .medicamentos-grid {
-    grid-template-columns: repeat(3, 1fr); 
+  .medicamentos-title {
+    font-size: 2.5rem;
   }
 }
 
-@media (max-width: 900px) {
-  .medicamentos-grid {
-    grid-template-columns: repeat(2, 1fr); 
+@media (max-width: 768px) {
+  .medicamentos-title {
+    font-size: 2.25rem;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 576px) {
   .medicamentos-title {
     font-size: 2rem;
   }
 
-  .medicamentos-grid {
-    grid-template-columns: 1fr; /* 1 columna en vista de móvil muy pequeño */
-  }
-
-  .medicamento-card h2 {
-    font-size: 1.4rem;
+  .medicamento-card .card-title {
+    font-size: 1.3rem;
   }
 }
+

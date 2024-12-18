@@ -1,73 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+}
+
 .iniciar-sesion-container {
-    max-width: 400px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.iniciar-sesion-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.iniciar-sesion-titulo {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.25rem;
+  color: #4a90e2;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.iniciar-sesion-mensaje {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.iniciar-sesion-etiqueta {
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 0.5rem;
+}
+
+.iniciar-sesion-input {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.iniciar-sesion-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.iniciar-sesion-boton {
+  background-color: #3f90f0;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.iniciar-sesion-boton:hover {
+  background-color: #2f73c6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(47, 115, 198, 0.3);
+}
+
+@media (max-width: 768px) {
   .iniciar-sesion-titulo {
-    text-align: center;
-    color: #333;
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .iniciar-sesion-titulo {
+    font-size: 1.75rem;
   }
   
-  .iniciar-sesion-mensaje {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #dc3545;
-    font-weight: bold;
+  .iniciar-sesion-container {
+    padding: 1.5rem;
   }
-  
-  .iniciar-sesion-formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .iniciar-sesion-campo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .iniciar-sesion-etiqueta {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .iniciar-sesion-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .iniciar-sesion-boton {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .iniciar-sesion-boton:hover {
-    background-color: #45a049;
-  }
-  
-  @media (max-width: 768px) {
-    .iniciar-sesion-container {
-      padding: 20px;
-    }
-  
-    .iniciar-sesion-titulo {
-      font-size: 1.5rem;
-    }
-  }
-  
+}
+

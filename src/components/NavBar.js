@@ -35,8 +35,8 @@ const NavBar = () => {
                 <li className="nav-item">
                   <span className="nav-link bienvenida">Bienvenido, {cliente.nombre}</span>
                 </li>
-                <li className="nav-item">
-                  <button onClick={manejarCerrarSesion} className="btn boton-cerrar-sesion">
+                <li className="nav-item boton-cerrar-sesion">
+                  <button onClick={manejarCerrarSesion} className="btn boton-nav boton-cerrar-sesion">
                     Cerrar Sesión
                   </button>
                 </li>
@@ -44,10 +44,10 @@ const NavBar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link to="/registrar-cliente" className="nav-link enlace-navegacion">Registrarse</Link>
+                  <Link to="/registrar-cliente" className="btn boton-nav boton-registrar me-2">Registrarse</Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/iniciar-sesion" className="nav-link enlace-navegacion">Iniciar Sesión</Link>
+                  <Link to="/iniciar-sesion" className="btn boton-nav boton-iniciar-sesion">Iniciar Sesión</Link>
                 </li>
               </>
             )}

@@ -4,10 +4,12 @@
 }
 
 .enlace-navegacion {
-  color: white;
+  color: white !important;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 0.5rem 1rem !important;
 }
 
 .enlace-navegacion:hover {
@@ -17,23 +19,47 @@
 
 .bienvenida {
   font-weight: 600;
-  color: #00ffbf;
+  color: #00ffbf !important;
   text-shadow: 1px 1px 7px black;
 }
 
-.boton-cerrar-sesion {
-  background: #ff6b6b;
-  color: white;
-  border: none;
-  cursor: pointer;
+.boton-nav {
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  border: none;
 }
 
-.boton-cerrar-sesion:hover {
-  background-color: #ff5252;
+.boton-nav:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.boton-nav.boton-cerrar-sesion {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.btn.boton-nav.boton-cerrar-sesion:hover {
+  background-color: #ff5252;
+}
+
+.btn.boton-nav.boton-registrar.me-2 {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn.boton-nav.boton-registrar.me-2:hover {
+  background-color: #45a049;
+}
+
+.btn.boton-nav.boton-iniciar-sesion {
+  background-color: #008CBA;
+  color: white;
+}
+
+.btn.boton-nav.boton-iniciar-sesion:hover {
+  background-color: #007B9E;
 }
 

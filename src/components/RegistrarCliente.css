@@ -1,91 +1,89 @@
-/* Contenedor principal */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
+}
+
 .registrar-cliente-container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Título */
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.registrar-cliente-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.registrar-cliente-titulo {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.25rem;
+  color: #4a90e2;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.registrar-cliente-mensaje {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.registrar-cliente-etiqueta {
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 0.5rem;
+}
+
+.registrar-cliente-input {
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.registrar-cliente-input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.registrar-cliente-boton {
+  background-color: #45a049;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.registrar-cliente-boton:hover {
+  background-color: #2e7b32;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 123, 50, 0.3);
+}
+
+@media (max-width: 768px) {
   .registrar-cliente-titulo {
-    text-align: center;
     font-size: 2rem;
-    color: #4a90e2;
-    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .registrar-cliente-titulo {
+    font-size: 1.75rem;
   }
   
-  /* Mensaje de feedback */
-  .registrar-cliente-mensaje {
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    border-radius: 5px;
+  .registrar-cliente-container {
+    padding: 1.5rem;
   }
-  
-  .registrar-cliente-mensaje.exito {
-    background-color: #e6fff2;
-    color: #2e8b57;
-  }
-  
-  .registrar-cliente-mensaje.error {
-    background-color: #ffe6e6;
-    color: #dc3545;
-  }
-  
-  /* Formulario */
-  .registrar-cliente-formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Campo del formulario */
-  .registrar-cliente-campo {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .registrar-cliente-etiqueta {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .registrar-cliente-input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  /* Botón */
-  .registrar-cliente-boton {
-    padding: 12px 20px;
-    background-color: #4facfe;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .registrar-cliente-boton:hover {
-    background-color: #3f90f0;
-  }
-  
-  /* Responsividad */
-  @media (max-width: 768px) {
-    .registrar-cliente-container {
-      padding: 20px;
-      margin: 20px;
-    }
-  
-    .registrar-cliente-titulo {
-      font-size: 1.8rem;
-    }
-  }
-  
+}
+
