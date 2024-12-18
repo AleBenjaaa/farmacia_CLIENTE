@@ -41,7 +41,7 @@ function RegistrarCliente() {
   const closeModal = () => {
     setModalVisible(false);
     if (modalSuccess) {
-      navigate("/"); // Redirigir después de éxito
+      navigate("/"); 
     }
   };
 

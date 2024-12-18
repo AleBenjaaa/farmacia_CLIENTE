@@ -37,7 +37,7 @@ function IniciarSesion() {
   const closeModal = () => {
     setModalVisible(false);
     if (modalSuccess) {
-      navigate("/"); // Redirige después de un inicio exitoso
+      navigate("/");
     }
   };
 

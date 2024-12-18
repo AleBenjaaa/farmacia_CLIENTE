@@ -17,7 +17,7 @@ const IngresarMedicamento = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    setSuccess(false); // Resetear mensaje de éxito al cambiar algo
+    setSuccess(false); 
   };
 
   const handleSubmit = async (e) => {
@@ -28,9 +28,9 @@ const IngresarMedicamento = () => {
         formData
       );
       console.log("Medicamento creado:", response.data);
-      setFormData({ nombre: "", descripcion: "", precio: "", stock: "" }); // Resetear formulario
+      setFormData({ nombre: "", descripcion: "", precio: "", stock: "" });
       setError(null);
-      setSuccess(true); // Mostrar mensaje de éxito
+      setSuccess(true); 
     } catch (err) {
       console.error(err);
       setError(err.response?.data || "Error desconocido");
