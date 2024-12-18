@@ -5,6 +5,7 @@ import RegistrarCliente from './components/RegistrarCliente';
 import IniciarSesion from './components/IniciarSesion';
 import CrearOrden from './components/CrearOrden';
 import Medicamentos from './components/Medicamentos';
+import IngresarMedicamento from './components/IngresarMedicamento';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/registrar-cliente" element={<RegistrarCliente />} />
         <Route path="/iniciar-sesion" element={<IniciarSesion />} />
         <Route path="/crear-orden" element={<CrearOrden />} />
+        <Route path="/ingresar" element={<IngresarMedicamento />} />
       </Routes>
     </Router>
   );
